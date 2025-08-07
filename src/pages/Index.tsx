@@ -360,6 +360,320 @@ export default function Index() {
         </div>
       </section>
 
+      {/* Website Builder Section */}
+      <section className="py-20 bg-gradient-to-br from-orange/5 to-turquoise/5">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h3 className="text-4xl font-bold font-montserrat mb-4">Конструктор сайтов</h3>
+            <p className="text-xl text-gray-600">Создавайте красивые сайты для аэродизайнеров за минуты</p>
+          </div>
+          
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-3 gap-8 mb-12">
+              {[
+                {
+                  name: 'Классический',
+                  description: 'Элегантный дизайн для профессионалов',
+                  features: ['Портфолио', 'Контакты', 'Услуги', 'Отзывы']
+                },
+                {
+                  name: 'Современный',
+                  description: 'Яркий дизайн с анимациями',
+                  features: ['Галерея', 'Калькулятор', 'Блог', 'Соц.сети']
+                },
+                {
+                  name: 'Бизнес',
+                  description: 'Корпоративный стиль с CRM',
+                  features: ['Заказы', 'Аналитика', 'Клиенты', 'Отчеты']
+                }
+              ].map((template, idx) => (
+                <Card key={idx} className="group hover:shadow-xl transition-all duration-300 border-0 bg-white">
+                  <CardContent className="p-6">
+                    <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg mb-6 flex items-center justify-center group-hover:from-orange/10 group-hover:to-turquoise/10 transition-all">
+                      <Icon name="Monitor" className="text-gray-400 group-hover:text-orange" size={48} />
+                    </div>
+                    <h4 className="text-xl font-bold font-montserrat mb-3">{template.name}</h4>
+                    <p className="text-gray-600 mb-4">{template.description}</p>
+                    <ul className="space-y-2 mb-6">
+                      {template.features.map((feature, i) => (
+                        <li key={i} className="flex items-center text-sm">
+                          <Icon name="Check" className="text-green-500 mr-2" size={14} />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                    <Button className="w-full bg-gradient-to-r from-orange to-turquoise text-white hover:from-orange-dark hover:to-turquoise-dark">
+                      Выбрать шаблон
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Online Store Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h3 className="text-4xl font-bold font-montserrat mb-4">Интернет-магазин</h3>
+            <p className="text-xl text-gray-600">Шары, аксессуары и материалы для аэродизайна</p>
+          </div>
+          
+          <Tabs defaultValue="balloons" className="max-w-6xl mx-auto">
+            <TabsList className="grid w-full grid-cols-4 mb-8">
+              <TabsTrigger value="balloons">Шары</TabsTrigger>
+              <TabsTrigger value="accessories">Аксессуары</TabsTrigger>
+              <TabsTrigger value="equipment">Оборудование</TabsTrigger>
+              <TabsTrigger value="decorations">Декор</TabsTrigger>
+            </TabsList>
+            
+            <TabsContent value="balloons">
+              <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
+                {[
+                  { name: 'Латексные шары', price: '5 ₽/шт', color: 'Разные цвета', stock: 'В наличии' },
+                  { name: 'Фольгированные цифры', price: '350 ₽/шт', color: 'Золото/Серебро', stock: 'В наличии' },
+                  { name: 'Шары-сердца', price: '15 ₽/шт', color: 'Красный/Розовый', stock: 'В наличии' },
+                  { name: 'Шары с гелием', price: '25 ₽/шт', color: 'Любой цвет', stock: 'Под заказ' }
+                ].map((item, idx) => (
+                  <Card key={idx} className="group hover:shadow-lg transition-shadow border-0">
+                    <div className="aspect-square bg-gradient-to-br from-orange/10 to-turquoise/10 rounded-t-lg flex items-center justify-center">
+                      <Icon name="Circle" className="text-orange" size={48} />
+                    </div>
+                    <CardContent className="p-4">
+                      <h5 className="font-semibold mb-2">{item.name}</h5>
+                      <p className="text-sm text-gray-600 mb-1">{item.color}</p>
+                      <div className="flex justify-between items-center mb-3">
+                        <span className="text-lg font-bold text-orange">{item.price}</span>
+                        <Badge variant="outline" className={item.stock === 'В наличии' ? 'text-green-600' : 'text-orange'}>
+                          {item.stock}
+                        </Badge>
+                      </div>
+                      <Button size="sm" className="w-full bg-gradient-to-r from-orange to-turquoise text-white">
+                        В корзину
+                      </Button>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </TabsContent>
+            
+            <TabsContent value="accessories">
+              <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
+                {[
+                  { name: 'Ленты и банты', price: '50 ₽/м', color: 'Атласные', stock: 'В наличии' },
+                  { name: 'Грузики для шаров', price: '15 ₽/шт', color: 'Металлические', stock: 'В наличии' },
+                  { name: 'Нитки и леска', price: '25 ₽/м', color: 'Прозрачные', stock: 'В наличии' },
+                  { name: 'Каркасы для арок', price: '500 ₽/шт', color: 'Пластиковые', stock: 'Под заказ' }
+                ].map((item, idx) => (
+                  <Card key={idx} className="group hover:shadow-lg transition-shadow border-0">
+                    <div className="aspect-square bg-gradient-to-br from-turquoise/10 to-skyblue/10 rounded-t-lg flex items-center justify-center">
+                      <Icon name="Package" className="text-turquoise" size={48} />
+                    </div>
+                    <CardContent className="p-4">
+                      <h5 className="font-semibold mb-2">{item.name}</h5>
+                      <p className="text-sm text-gray-600 mb-1">{item.color}</p>
+                      <div className="flex justify-between items-center mb-3">
+                        <span className="text-lg font-bold text-turquoise">{item.price}</span>
+                        <Badge variant="outline" className={item.stock === 'В наличии' ? 'text-green-600' : 'text-orange'}>
+                          {item.stock}
+                        </Badge>
+                      </div>
+                      <Button size="sm" className="w-full bg-gradient-to-r from-turquoise to-skyblue text-white">
+                        В корзину
+                      </Button>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </TabsContent>
+            
+            <TabsContent value="equipment">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {[
+                  { name: 'Баллон с гелием', price: '2500 ₽/шт', description: '10л, хватает на 100 шаров', stock: 'В наличии' },
+                  { name: 'Насос для шаров', price: '800 ₽/шт', description: 'Электрический, быстрая накачка', stock: 'В наличии' },
+                  { name: 'Тележка для транспортировки', price: '3500 ₽/шт', description: 'Складная, до 50кг', stock: 'Под заказ' }
+                ].map((item, idx) => (
+                  <Card key={idx} className="hover:shadow-lg transition-shadow border-0">
+                    <div className="aspect-video bg-gradient-to-br from-skyblue/10 to-orange/10 rounded-t-lg flex items-center justify-center">
+                      <Icon name="Settings" className="text-skyblue" size={48} />
+                    </div>
+                    <CardContent className="p-4">
+                      <h5 className="font-semibold mb-2">{item.name}</h5>
+                      <p className="text-sm text-gray-600 mb-3">{item.description}</p>
+                      <div className="flex justify-between items-center mb-3">
+                        <span className="text-lg font-bold text-skyblue">{item.price}</span>
+                        <Badge variant="outline" className={item.stock === 'В наличии' ? 'text-green-600' : 'text-orange'}>
+                          {item.stock}
+                        </Badge>
+                      </div>
+                      <Button size="sm" className="w-full bg-gradient-to-r from-skyblue to-turquoise text-white">
+                        В корзину
+                      </Button>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </TabsContent>
+
+            <TabsContent value="decorations">
+              <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
+                {[
+                  { name: 'Цветы искусственные', price: '150 ₽/шт', color: 'Разные', stock: 'В наличии' },
+                  { name: 'Стразы и блёстки', price: '80 ₽/уп', color: 'Золото/Серебро', stock: 'В наличии' },
+                  { name: 'Фигурки из пенопласта', price: '300 ₽/шт', color: 'Под покраску', stock: 'Под заказ' },
+                  { name: 'Светодиодные гирлянды', price: '450 ₽/м', color: 'Цветные/Белые', stock: 'В наличии' }
+                ].map((item, idx) => (
+                  <Card key={idx} className="group hover:shadow-lg transition-shadow border-0">
+                    <div className="aspect-square bg-gradient-to-br from-pink-100 to-purple-100 rounded-t-lg flex items-center justify-center">
+                      <Icon name="Star" className="text-pink-500" size={48} />
+                    </div>
+                    <CardContent className="p-4">
+                      <h5 className="font-semibold mb-2">{item.name}</h5>
+                      <p className="text-sm text-gray-600 mb-1">{item.color}</p>
+                      <div className="flex justify-between items-center mb-3">
+                        <span className="text-lg font-bold text-pink-500">{item.price}</span>
+                        <Badge variant="outline" className={item.stock === 'В наличии' ? 'text-green-600' : 'text-orange'}>
+                          {item.stock}
+                        </Badge>
+                      </div>
+                      <Button size="sm" className="w-full bg-gradient-to-r from-pink-400 to-purple-400 text-white">
+                        В корзину
+                      </Button>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </TabsContent>
+          </Tabs>
+        </div>
+      </section>
+
+      {/* Booking System Section */}
+      <section className="py-20 bg-gradient-to-br from-skyblue/5 to-turquoise/5">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h3 className="text-4xl font-bold font-montserrat mb-4">Система бронирования</h3>
+            <p className="text-xl text-gray-600">Удобное планирование и управление заказами</p>
+          </div>
+          
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-8">
+              <Card className="p-6 border-0 shadow-xl bg-white">
+                <div className="flex items-center justify-between mb-6">
+                  <h4 className="text-xl font-bold">Календарь заказов</h4>
+                  <div className="flex gap-2">
+                    <Button variant="outline" size="sm">
+                      <Icon name="ChevronLeft" size={14} />
+                    </Button>
+                    <span className="px-3 py-1 text-sm font-medium">Декабрь 2024</span>
+                    <Button variant="outline" size="sm">
+                      <Icon name="ChevronRight" size={14} />
+                    </Button>
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-7 gap-1 mb-4">
+                  {['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'].map((day) => (
+                    <div key={day} className="p-2 text-center text-sm font-medium text-gray-600">
+                      {day}
+                    </div>
+                  ))}
+                  {Array.from({ length: 35 }, (_, i) => {
+                    const day = i - 4 + 1;
+                    const isCurrentMonth = day > 0 && day <= 31;
+                    const hasEvent = [5, 12, 18, 25, 31].includes(day);
+                    const isToday = day === 7;
+                    
+                    return (
+                      <div
+                        key={i}
+                        className={`p-2 text-center text-sm cursor-pointer rounded-lg transition-colors ${
+                          !isCurrentMonth 
+                            ? 'text-gray-300' 
+                            : isToday
+                              ? 'bg-orange text-white font-bold'
+                              : hasEvent
+                                ? 'bg-turquoise/20 text-turquoise font-semibold'
+                                : 'hover:bg-gray-100'
+                        }`}
+                      >
+                        {isCurrentMonth ? day : ''}
+                      </div>
+                    );
+                  })}
+                </div>
+                
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3 p-3 bg-orange/10 rounded-lg">
+                    <div className="w-3 h-3 bg-orange rounded-full"></div>
+                    <div className="flex-1">
+                      <div className="font-medium">Свадьба Петровых</div>
+                      <div className="text-sm text-gray-600">7 декабря, 15:00</div>
+                    </div>
+                    <Badge className="bg-orange text-white">Сегодня</Badge>
+                  </div>
+                  <div className="flex items-center gap-3 p-3 bg-turquoise/10 rounded-lg">
+                    <div className="w-3 h-3 bg-turquoise rounded-full"></div>
+                    <div className="flex-1">
+                      <div className="font-medium">День рождения</div>
+                      <div className="text-sm text-gray-600">12 декабря, 12:00</div>
+                    </div>
+                    <Badge variant="outline" className="text-turquoise">Подтверждено</Badge>
+                  </div>
+                </div>
+              </Card>
+              
+              <Card className="p-6 border-0 shadow-xl bg-white">
+                <h4 className="text-xl font-bold mb-6">Новый заказ</h4>
+                
+                <div className="space-y-4">
+                  <div>
+                    <Label className="text-sm font-medium">Клиент</Label>
+                    <Input placeholder="Имя и фамилия" className="mt-1" />
+                  </div>
+                  
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <Label className="text-sm font-medium">Дата</Label>
+                      <Input type="date" className="mt-1" />
+                    </div>
+                    <div>
+                      <Label className="text-sm font-medium">Время</Label>
+                      <Input type="time" className="mt-1" />
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <Label className="text-sm font-medium">Тип события</Label>
+                    <Select>
+                      <SelectTrigger className="mt-1">
+                        <SelectValue placeholder="Выберите тип" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="wedding">Свадьба</SelectItem>
+                        <SelectItem value="birthday">День рождения</SelectItem>
+                        <SelectItem value="corporate">Корпоратив</SelectItem>
+                        <SelectItem value="anniversary">Юбилей</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  
+                  <div className="pt-4 space-y-3">
+                    <Button className="w-full bg-gradient-to-r from-orange to-turquoise text-white">
+                      <Icon name="Plus" className="mr-2" size={16} />
+                      Создать заказ
+                    </Button>
+                  </div>
+                </div>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Admin Panel Preview */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
