@@ -61,6 +61,25 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Aero Design Platform Colors
+				orange: {
+					DEFAULT: '#FF6B35',
+					light: '#FF8C66',
+					dark: '#E6522A'
+				},
+				turquoise: {
+					DEFAULT: '#4ECDC4',
+					light: '#7BD9D1',
+					dark: '#3BA69F'
+				},
+				skyblue: {
+					DEFAULT: '#45B7D1',
+					light: '#6CC7DD',
+					dark: '#3A9BC1'
+				},
+				gray: {
+					light: '#F8F9FA'
 				}
 			},
 			borderRadius: {
@@ -84,11 +103,37 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'fade-in': {
+					from: {
+						opacity: '0',
+						transform: 'translateY(20px)'
+					},
+					to: {
+						opacity: '1',
+						transform: 'translateY(0)'
+					}
+				},
+				'slide-up': {
+					from: {
+						transform: 'translateY(100px)',
+						opacity: '0'
+					},
+					to: {
+						transform: 'translateY(0)',
+						opacity: '1'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.6s ease-out',
+				'slide-up': 'slide-up 0.8s ease-out'
+			},
+			fontFamily: {
+				'montserrat': ['Montserrat', 'sans-serif'],
+				'open-sans': ['Open Sans', 'sans-serif']
 			}
 		}
 	},
